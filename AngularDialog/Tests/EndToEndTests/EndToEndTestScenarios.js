@@ -59,50 +59,26 @@
         });
 
         describe("AddItem dialog", function () {
-            
+
             describe("form validation", function () {
 
-                describe("ok button", function () {
-
-//                    it("is disabled when all input fields are blank", function () {
-//                        browser().navigateTo(baseUrl);
-//                        element("#addItemBtn").click();
-//                        expect(element("#okBtn:enabled").count()).toBe(0);
-//                    });
-
-//                    it("is disabled when lastname and email fields are blank", function () {
-//                        browser().navigateTo(baseUrl);
-//                        element("#addItemBtn").click();
-//                        input("addItemDialogModel.firstName").enter("firstname3");
-//                        expect(element("#okBtn:enabled").count()).toBe(0);
-//                    });
-
-//                    it("is disabled when email field is blank", function () {
-//                        browser().navigateTo(baseUrl);
-//                        element("#addItemBtn").click();
-//                        input("addItemDialogModel.firstName").enter("firstname3");
-//                        input("addItemDialogModel.lastName").enter("lastname3");
-//                        expect(element("#okBtn:enabled").count()).toBe(0);
-//                    });
-
-//                    it("is disabled when all fields are filled but email is invalid", function () {
-//                        browser().navigateTo(baseUrl);
-//                        element("#addItemBtn").click();
-//                        input("addItemDialogModel.firstName").enter("firstname3");
-//                        input("addItemDialogModel.lastName").enter("lastname3");
-//                        input("addItemDialogModel.email").enter("bogus-email-address");
-//                        expect(element("#okBtn:enabled").count()).toBe(0);
-//                    });
-
-                    it("is enabled when all fields are filled and valid", function () {
-                        browser().navigateTo(baseUrl);
-                        element("#addItemBtn").click();
-                        input("addItemDialogModel.firstName").enter("firstname3");
-                        input("addItemDialogModel.lastName").enter("lastname3");
-                        input("addItemDialogModel.email").enter("firstname3.lastname3@gmail.com");
-                        expect(element("#okBtn:enabled").count()).toBe(1);
-                    });
+                it("displays an error message against each field when trying to submit a completely blank form", function () {
+                    browser().navigateTo(baseUrl);
+                    element("#addItemBtn").click();
+                    expect(element("#okBtn:enabled").count()).toBe(1);
+                    element("#okBtn").click();
+                    expect(element("div[data-ng-form] span.alert").count()).toBe(3);
+                    // "First name is a required field."
                 });
+
+//                it("ok button is enabled when all fields are filled and valid", function () {
+//                    browser().navigateTo(baseUrl);
+//                    element("#addItemBtn").click();
+//                    input("addItemDialogModel.firstName").enter("firstname3");
+//                    input("addItemDialogModel.lastName").enter("lastname3");
+//                    input("addItemDialogModel.email").enter("firstname3.lastname3@gmail.com");
+//                    expect(element("#okBtn:enabled").count()).toBe(1);
+//                });
             });
         });
     });
@@ -113,5 +89,5 @@
 //        });
 //        expect(future).toBe("this test to be implemented");
 //    };
-//    
+
 } ());
