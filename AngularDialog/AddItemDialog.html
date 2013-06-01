@@ -1,0 +1,50 @@
+﻿<div class="modal-header">
+    <button id="closeBtn" type="button" class="close" data-ng-click="onCancel()">&times;</button>
+    <h3>Add an item</h3>
+</div>
+
+<div data-ng-form class="form-horizontal" data-name="addItemDialogForm">
+    <div class="modal-body">
+        
+        <div class="control-group">
+            <label class="control-label" for="firstName">First Name</label>
+            <div class="controls">
+                <input id="firstName" type="text" class="span3" data-name="firstNameControl" data-ng-required="true" data-ng-model="addItemDialogModel.firstName" />
+                <span class="required-field">*</span>
+                <span class="alert" data-ng-show="addItemDialogForm.mySubmitAttempted && addItemDialogForm.firstNameControl.$invalid">
+                    <span data-ng-show="addItemDialogForm.firstNameControl.$error.required">First name is a required field.</span>
+                </span>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label" for="lastName">Last Name</label>
+            <div class="controls">
+                <input id="lastName" type="text" class="span3" data-name="lastNameControl" data-ng-required="true" data-ng-model="addItemDialogModel.lastName" />
+                <span class="required-field">*</span>
+                <span class="alert" data-ng-show="addItemDialogForm.mySubmitAttempted && addItemDialogForm.lastNameControl.$invalid">
+                    <span data-ng-show="addItemDialogForm.lastNameControl.$error.required">Last name is a required field.</span>
+                </span>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label" for="email">Email Address</label>
+            <div class="controls">
+                <input id="email" type="email" class="span3" data-name="emailControl" data-ng-required="true" data-ng-model="addItemDialogModel.email" />
+                <span class="required-field">*</span>
+                <span class="alert" data-ng-show="addItemDialogForm.mySubmitAttempted && addItemDialogForm.emailControl.$invalid">
+                    <span data-ng-show="addItemDialogForm.emailControl.$error.required">Email address is a required field.</span>
+                    <span data-ng-show="addItemDialogForm.emailControl.$error.email">Email address not valid.</span>
+                </span>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="modal-footer">
+        <!--<button id="okBtn" class="btn btn-primary btn-small" data-ng-click="onOk()" data-ng-disabled="addItemDialogForm.$invalid">OK</button>-->
+        <button id="okBtn" class="btn btn-primary btn-small" data-ng-click="onOk()">OK</button>
+        <button id="cancelBtn" class="btn btn-small" data-ng-click="onCancel()">Cancel</button>
+    </div>
+</div>

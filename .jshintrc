@@ -1,0 +1,27 @@
+{
+	"undef": true,
+	"unused": true,
+	"bitwise": true,
+	"curly": true,
+	"eqnull": true,
+	"eqeqeq": true,
+	"quotmark": "double",
+	"trailing": true,
+	"maxdepth": 2,
+	"strict": true,
+	"globals": {
+		"nameList": true,
+		"console": true,
+		"window": true,
+		"describe": true,
+		"it": true,
+		"beforeEach": true,
+		"afterEach": true,
+		"angular": true,
+		"browser": true,
+		"input": true,
+		"element": true,
+		"select": true,
+		"expect": true
+	}
+}
