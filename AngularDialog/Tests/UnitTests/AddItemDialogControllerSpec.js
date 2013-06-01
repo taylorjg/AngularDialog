@@ -19,16 +19,15 @@
 
         beforeEach(function () {
             angular.mock.module("NameListApp");
-        });
-
-        beforeEach(angular.mock.inject(function ($rootScope, $controller, $dialog) {
-            _scope = $rootScope.$new();
-            _dialog = $dialog.dialog;
-            _controller = $controller("nameList.controllers.AddItemDialogController", {
-                $scope: _scope,
-                dialog: _dialog
+            angular.mock.inject(function($rootScope, $controller, $dialog) {
+                _scope = $rootScope.$new();
+                _dialog = $dialog.dialog;
+                _controller = $controller("nameList.controllers.AddItemDialogController", {
+                    $scope: _scope,
+                    dialog: _dialog
+                });
             });
-        }));
+        });
 
         it("can construct the controller", function () {
             expect(_controller).not.toBeNull();
