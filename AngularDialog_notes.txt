@@ -1,0 +1,18 @@
+
+Ideas:
+
+- introduce an angular service to get/list/save/delete items
+
+- add ability to edit items
+
+- add ability to delete items
+
+- add a real back-end service with in-memory repository to store items
+(items will disappear when the web app is restarted)
+
+- add unit tests around the stuff above
+
+- add e2e tests around the stuff above
+
+- create a directive for validation to reduce the amount of repeated code
+
