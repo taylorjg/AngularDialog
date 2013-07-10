@@ -7,11 +7,7 @@
 
     describe("AngularDialog End-to-End Tests", function () {
 
-        // This URL is for AngularDialog running under the Visual Studio
-        // web development server (Cassini). The port number is assigned
-        // in the "Web" section of the AngularDialog project's properties
-        // (see the "Specific port" setting).
-        var baseUrl = "http://localhost:58587/NameList.html";
+        var baseUrl = "http://" + window.location.host + "/NameList.html";
 
         it("initially displays 2 items in the table", function () {
             browser().navigateTo(baseUrl);
