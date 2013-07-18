@@ -18,7 +18,8 @@
 
         beforeEach(function () {
             angular.mock.module("NameListApp");
-            angular.mock.inject(function($rootScope, $controller) {
+            angular.mock.inject(function ($rootScope, $controller, $httpBackend) {
+                $httpBackend.whenGET(/\/Api\/NameList$/).respond([]);
                 _scope = $rootScope.$new();
                 _controller = $controller("nameList.controllers.NameListController", {
                     $scope: _scope

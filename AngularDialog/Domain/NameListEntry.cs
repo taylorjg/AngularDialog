@@ -1,4 +1,5 @@
 ﻿using System.Runtime.Serialization;
+using Newtonsoft.Json;
 
 namespace AngularDialog.Domain
 {
@@ -12,6 +13,7 @@ namespace AngularDialog.Domain
             Email = email;
         }
 
+        [JsonConstructor]
         public NameListEntry(int id, string firstName, string lastName, string email)
         {
             Id = id;

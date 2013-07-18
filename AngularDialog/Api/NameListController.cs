@@ -30,7 +30,7 @@ namespace AngularDialog.Api
             _nameListRepository.Create(nameListEntry);
         }
 
-        public void Put([FromBody] NameListEntry nameListEntry)
+        public void Post(int id, [FromBody] NameListEntry nameListEntry)
         {
             _nameListRepository.Update(nameListEntry);
         }

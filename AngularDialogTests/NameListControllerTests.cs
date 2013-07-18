@@ -92,7 +92,7 @@ namespace AngularDialogTests
                 "F2-new",
                 "L2-new",
                 "E2-new");
-            _nameListController.Put(newItem);
+            _nameListController.Post(newItem.Id, newItem);
 
             var actual = _nameListController.Get().ToList();
 
@@ -114,7 +114,7 @@ namespace AngularDialogTests
                 "F99-new",
                 "L99-new",
                 "E99-new");
-            Assert.Throws<System.InvalidOperationException>(() => _nameListController.Put(newItem));
+            Assert.Throws<System.InvalidOperationException>(() => _nameListController.Post(newItem.Id, newItem));
         }
 
         [Test]

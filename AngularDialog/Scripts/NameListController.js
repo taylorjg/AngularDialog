@@ -1,6 +1,8 @@
 ﻿/// <reference path="ThirdParty/AngularJS/angular.js" />
 /// <reference path="models.js" />
 
+// ReSharper disable InconsistentNaming
+
 (function () {
 
     "use strict";
@@ -10,11 +12,15 @@
 
     var app = angular.module("NameListApp");
 
-    app.controller("nameList.controllers.NameListController", ["$scope", "$dialog", function ($scope, $dialog) {
+    app.controller("nameList.controllers.NameListController", ["$scope", "$dialog", "nameListService", function ($scope, $dialog, nameListService) {
 
         $scope.nameListModel = new nameList.models.NameListModel();
-        $scope.nameListModel.addItem(new nameList.models.Item("firstname1", "lastname1", "firstname1.lastname1@gmail.com"));
-        $scope.nameListModel.addItem(new nameList.models.Item("firstname2", "lastname2", "firstname2.lastname2@gmail.com"));
+        
+        nameListService.query(function (items) {
+            angular.forEach(items, function(item) {
+                $scope.nameListModel.addItem(new nameList.models.Item(item.FirstName, item.LastName, item.Email));
+            });
+        });
 
         $scope.onAddItem = function () {
             var dialog = $dialog.dialog({

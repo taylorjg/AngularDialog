@@ -39,9 +39,8 @@ namespace AngularDialog
                 if (_nameListRepository == null)
                 {
                     _nameListRepository = new InMemoryNameListRepository();
-                    _nameListRepository.Create(new NameListEntry("Jonathan", "Taylor", "jonathan.taylor@drllimited.co.uk"));
-                    _nameListRepository.Create(new NameListEntry("Michael", "Whiteside", "michael.whiteside@drllimited.co.uk"));
-                    _nameListRepository.Create(new NameListEntry("Russell", "Allen", "russell.allen@drllimited.co.uk"));
+                    _nameListRepository.Create(new NameListEntry("firstname1", "lastname1", "firstname1.lastname1@gmail.com"));
+                    _nameListRepository.Create(new NameListEntry("firstname2", "lastname2", "firstname2.lastname2@gmail.com"));
                 }
 
                 return new NameListController(_nameListRepository);
