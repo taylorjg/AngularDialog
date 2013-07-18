@@ -4,5 +4,5 @@
 
     "use strict";
 
-    angular.module("NameListApp", ["ui", "ui.bootstrap"]);
+    angular.module("NameListApp", ["ngResource", "ui", "ui.bootstrap"]);
 } ());

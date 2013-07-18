@@ -76,6 +76,7 @@
     <Content Include="Global.asax" />
     <Content Include="Scripts\AddItemDialogController.js" />
     <Content Include="Scripts\app.js" />
+    <Content Include="Scripts\NameListService.js" />
     <Content Include="Scripts\PollyFill\html5shiv.js" />
     <Content Include="Scripts\PollyFill\json2.js" />
     <Content Include="Tests\EndToEndTests\EndToEndTestRunner.html" />
@@ -117,6 +118,7 @@
     <Content Include="Tests\UnitTests\jasmine-1.3.1\jasmine.js" />
     <Content Include="Tests\UnitTests\JasmineSpecRunner.html" />
     <Content Include="Tests\UnitTests\NameListControllerSpec.js" />
+    <Content Include="Tests\UnitTests\NameListServiceSpec.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
