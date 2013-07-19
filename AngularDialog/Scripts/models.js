@@ -25,13 +25,14 @@
 
     window.nameList.models.AddItemDialogModel = function () {
 
+        this.id = 0;
         this.firstName = "";
         this.lastName = "";
         this.email = "";
 
         this.item = function () {
             return new nameList.models.Item(
-                0,
+                this.id,
                 this.firstName,
                 this.lastName,
                 this.email);

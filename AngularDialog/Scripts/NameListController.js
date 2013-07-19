@@ -19,11 +19,16 @@
 
         $scope.onAddItem = function () {
             var dialog = $dialog.dialog({
-                modalFade: true
+                modalFade: true,
+                resolve: {
+                    item: function () {
+                        return new window.nameList.models.Item();
+                    }
+                }
             });
-            dialog.open("AddItemDialog.html", "nameList.controllers.AddItemDialogController").then(function (item) {
-                if (item) {
-                    nameListService.save(item, function () {
+            dialog.open("AddItemDialog.html", "nameList.controllers.AddItemDialogController").then(function (modifiedItem) {
+                if (modifiedItem) {
+                    nameListService.save(modifiedItem, function () {
                         $scope.nameListModel.items = nameListService.query();
                     });
                 }
@@ -31,11 +36,25 @@
         };
 
         $scope.onEditItem = function (item) {
-            alert("onEditItem() - " + item.Id);
+            var dialog = $dialog.dialog({
+                modalFade: true,
+                resolve: {
+                    item: function () {
+                        return item;
+                    }
+                }
+            });
+            dialog.open("AddItemDialog.html", "nameList.controllers.AddItemDialogController").then(function (modifiedItem) {
+                if (modifiedItem) {
+                    nameListService.save(modifiedItem, function () {
+                        $scope.nameListModel.items = nameListService.query();
+                    });
+                }
+            });
         };
 
         $scope.onDeleteItem = function (item) {
-            nameListService.remove(item.Id, function() {
+            nameListService.remove(item.Id, function () {
                 $scope.nameListModel.items = nameListService.query();
             });
         };

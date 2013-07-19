@@ -13,7 +13,7 @@ namespace AngularDialog.Repositories
 
         public IEnumerable<NameListEntry> GetAll()
         {
-            return _records;
+            return _records.OrderBy(r => r.Id);
         }
 
         public NameListEntry Get(int id)

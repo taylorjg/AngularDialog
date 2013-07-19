@@ -10,9 +10,14 @@
 
     var app = angular.module("NameListApp");
 
-    app.controller("nameList.controllers.AddItemDialogController", ["$scope", "dialog", function ($scope, dialog) {
+    app.controller("nameList.controllers.AddItemDialogController", ["$scope", "dialog", "item", function ($scope, dialog, item) {
 
         $scope.addItemDialogModel = new nameList.models.AddItemDialogModel();
+
+        $scope.addItemDialogModel.id = item.Id;
+        $scope.addItemDialogModel.firstName = item.FirstName;
+        $scope.addItemDialogModel.lastName = item.LastName;
+        $scope.addItemDialogModel.email = item.Email;
 
         $scope.onCancel = function () {
             dialog.close();

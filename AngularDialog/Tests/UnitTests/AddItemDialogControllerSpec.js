@@ -24,7 +24,8 @@
                 _dialog = $dialog.dialog;
                 _controller = $controller("nameList.controllers.AddItemDialogController", {
                     $scope: _scope,
-                    dialog: _dialog
+                    dialog: _dialog,
+                    item: new window.nameList.models.Item()
                 });
             });
         });

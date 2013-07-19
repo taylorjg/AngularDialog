@@ -14,6 +14,8 @@ Ideas:
 
 - confirm deletion of an item
 
+- set the initial focus to the firstname field in the dialog
+
 - add unit tests around the stuff above
 
 - add e2e tests around the stuff above
