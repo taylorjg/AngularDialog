@@ -5,10 +5,13 @@
     window.nameList = window.nameList || {};
     window.nameList.models = window.nameList.models || {};
 
-    window.nameList.models.Item = function (firstName, lastName, email) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
+    window.nameList.models.Item = function (id, firstName, lastName, email) {
+        if (id) {
+            this.Id = id;
+        }
+        this.FirstName = firstName;
+        this.LastName = lastName;
+        this.Email = email;
     };
 
     window.nameList.models.NameListModel = function () {
@@ -28,6 +31,7 @@
 
         this.item = function () {
             return new nameList.models.Item(
+                0,
                 this.firstName,
                 this.lastName,
                 this.email);

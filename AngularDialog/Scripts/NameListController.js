@@ -15,12 +15,7 @@
     app.controller("nameList.controllers.NameListController", ["$scope", "$dialog", "nameListService", function ($scope, $dialog, nameListService) {
 
         $scope.nameListModel = new nameList.models.NameListModel();
-        
-        nameListService.query(function (items) {
-            angular.forEach(items, function(item) {
-                $scope.nameListModel.addItem(new nameList.models.Item(item.FirstName, item.LastName, item.Email));
-            });
-        });
+        $scope.nameListModel.items = nameListService.query();
 
         $scope.onAddItem = function () {
             var dialog = $dialog.dialog({
@@ -28,8 +23,20 @@
             });
             dialog.open("AddItemDialog.html", "nameList.controllers.AddItemDialogController").then(function (item) {
                 if (item) {
-                    $scope.nameListModel.addItem(item);
+                    nameListService.save(item, function () {
+                        $scope.nameListModel.items = nameListService.query();
+                    });
                 }
+            });
+        };
+
+        $scope.onEditItem = function (item) {
+            alert("onEditItem() - " + item.Id);
+        };
+
+        $scope.onDeleteItem = function (item) {
+            nameListService.remove(item.Id, function() {
+                $scope.nameListModel.items = nameListService.query();
             });
         };
     } ]);
