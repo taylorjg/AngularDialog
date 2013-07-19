@@ -60,14 +60,14 @@
                 });
         };
 
-        this.remove = function(id, successFn, errorFn) {
+        this.remove = function(item, successFn, errorFn) {
 
             successFn = successFn || angular.noop;
             errorFn = errorFn || angular.noop;
 
             _resource.remove(
                 {
-                    id: id
+                    id: item.Id
                 },
                 function(x) {
                     successFn(x);

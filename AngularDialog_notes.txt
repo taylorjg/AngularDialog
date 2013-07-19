@@ -1,24 +1,49 @@
 
-Ideas:
+TODO:
 
-- introduce an angular service to get/list/save/delete items
+- introduce an angular service to query/save/remove items
+*** DONE ***
 
 - add ability to edit items
+*** DONE ***
 
 - add ability to delete items
+*** DONE ***
 
 - add a real back-end service with in-memory repository to store items
 (items will disappear when the web app is restarted)
+*** DONE ***
+
+- add backend setup around the new /Api/NameList service to get the e2e tests working again
 
 - handle errors from the service
 
-- confirm deletion of an item
+- add confirmation re deletion of an item
+
+- combine $scope functions re new/edit because they are very similar
+*** DONE ***
+
+- store item directly on AddItemDialogModel ?
+$scope.addItemDialogModel.item = item
+then data bind to 
+addItemDialogModel.item.FirstName etc instead of addItemDialogModel.firstName etc.
+*** DONE ***
 
 - set the initial focus to the firstname field in the dialog
+ - need to use a directive ?
 
-- add unit tests around the stuff above
+- add unit tests to:
+ - NameListControllerSpec.js
+ - AddItemDialogControllerSpec.js
 
-- add e2e tests around the stuff above
+- add unit tests around the new functionality (query/save/delete)
+
+- add e2e tests around the new functionality (query/save/delete)
+
+- add karma_unit.conf.js & karma_e2e.conf.js files
+ - using latest version of karma!
 
 - create a directive for validation to reduce the amount of repeated code
+
+- write a readme.md with screenshots
 

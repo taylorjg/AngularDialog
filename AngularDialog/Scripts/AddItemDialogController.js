@@ -13,11 +13,7 @@
     app.controller("nameList.controllers.AddItemDialogController", ["$scope", "dialog", "item", function ($scope, dialog, item) {
 
         $scope.addItemDialogModel = new nameList.models.AddItemDialogModel();
-
-        $scope.addItemDialogModel.id = item.Id;
-        $scope.addItemDialogModel.firstName = item.FirstName;
-        $scope.addItemDialogModel.lastName = item.LastName;
-        $scope.addItemDialogModel.email = item.Email;
+        $scope.addItemDialogModel.item = item;
 
         $scope.onCancel = function () {
             dialog.close();
@@ -26,7 +22,7 @@
         $scope.onOk = function () {
             $scope.addItemDialogForm.mySubmitAttempted = true;
             if ($scope.addItemDialogForm.$valid) {
-                dialog.close($scope.addItemDialogModel.item());
+                dialog.close($scope.addItemDialogModel.item);
             }
         };
     } ]);

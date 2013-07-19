@@ -28,7 +28,7 @@
         });
 
         it("can construct the controller", function () {
-            expect(_controller).not.toBeNull();
+            expect(_controller).toBeDefined();
         });
     });
 } ());

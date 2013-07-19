@@ -70,8 +70,10 @@
             _httpBackend.flush();
 
             // Assert
-            expect(actual).not.toBeNull();
-            expect(angular.isArray(actual)).toBe(true);
+            expect(actual).toEqualData(_queryResponse);
+
+            _httpBackend.verifyNoOutstandingRequest();
+            _httpBackend.verifyNoOutstandingExpectation();
         });
 
         it("can get a single name list entry", function () {
@@ -193,7 +195,7 @@
             _httpBackend.whenDELETE(/\/Api\/NameList\/2$/).respond(200);
 
             // Act
-            _service.remove(nameListEntry.Id);
+            _service.remove(nameListEntry);
             _httpBackend.flush();
 
             // Assert

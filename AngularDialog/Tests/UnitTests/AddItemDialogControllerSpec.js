@@ -25,13 +25,13 @@
                 _controller = $controller("nameList.controllers.AddItemDialogController", {
                     $scope: _scope,
                     dialog: _dialog,
-                    item: new window.nameList.models.Item()
+                    item: {}
                 });
             });
         });
 
         it("can construct the controller", function () {
-            expect(_controller).not.toBeNull();
+            expect(_controller).toBeDefined();
         });
     });
 } ());

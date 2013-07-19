@@ -18,21 +18,7 @@
         $scope.nameListModel.items = nameListService.query();
 
         $scope.onAddItem = function () {
-            var dialog = $dialog.dialog({
-                modalFade: true,
-                resolve: {
-                    item: function () {
-                        return new window.nameList.models.Item();
-                    }
-                }
-            });
-            dialog.open("AddItemDialog.html", "nameList.controllers.AddItemDialogController").then(function (modifiedItem) {
-                if (modifiedItem) {
-                    nameListService.save(modifiedItem, function () {
-                        $scope.nameListModel.items = nameListService.query();
-                    });
-                }
-            });
+            $scope.onEditItem({});
         };
 
         $scope.onEditItem = function (item) {
@@ -54,7 +40,7 @@
         };
 
         $scope.onDeleteItem = function (item) {
-            nameListService.remove(item.Id, function () {
+            nameListService.remove(item, function () {
                 $scope.nameListModel.items = nameListService.query();
             });
         };

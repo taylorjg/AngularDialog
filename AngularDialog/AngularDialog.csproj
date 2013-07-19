@@ -79,6 +79,7 @@
     <Content Include="Scripts\NameListService.js" />
     <Content Include="Scripts\PollyFill\html5shiv.js" />
     <Content Include="Scripts\PollyFill\json2.js" />
+    <Content Include="Tests\EndToEndTests\EndToEndTestHttpBackendSetup.js" />
     <Content Include="Tests\EndToEndTests\EndToEndTestRunner.html" />
     <Content Include="Tests\EndToEndTests\EndToEndTestScenarios.js" />
     <Content Include="Scripts\models.js" />
