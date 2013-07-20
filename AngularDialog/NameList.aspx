@@ -1,5 +1,7 @@
-﻿<!DOCTYPE html>
-<html id="ng-app" data-ng-app="NameListApp">
+﻿<%@ Page Language="C#" Inherits="AngularDialog.MyPageBase" %>
+
+<!DOCTYPE html>
+<html id="ng-app" data-ng-app="<%= (IsInAngularJsEndToEndTestMode) ? "NameListAppE2E" : "NameListApp" %>">
     
     <head>
         <title>Name List</title>
@@ -22,6 +24,10 @@
         <script src="Scripts/NameListController.js" type="text/javascript"></script>
         <script src="Scripts/AddItemDialogController.js" type="text/javascript"></script>
         <script src="Scripts/NameListService.js" type="text/javascript"></script>
+        <% if (IsInAngularJsEndToEndTestMode) { %>
+            <script src="Tests/EndToEndTests/EndToEndTestHttpBackendSetup.js" type="text/javascript"></script>
+            <script src="Scripts/ThirdParty/AngularJS/angular-mocks.js" type="text/javascript"></script>
+        <% } %>
     </head>
 
     <body data-ng-controller="nameList.controllers.NameListController">

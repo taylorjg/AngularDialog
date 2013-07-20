@@ -84,7 +84,7 @@
     <Content Include="Tests\EndToEndTests\EndToEndTestScenarios.js" />
     <Content Include="Scripts\models.js" />
     <Content Include="Styles\NameList.css" />
-    <Content Include="NameList.html" />
+    <Content Include="NameList.aspx" />
     <Content Include="Scripts\NameListController.js" />
     <Content Include="Scripts\ThirdParty\AngularJS\angular-bootstrap-prettify.js" />
     <Content Include="Scripts\ThirdParty\AngularJS\angular-bootstrap-prettify.min.js" />
@@ -133,6 +133,9 @@
     <Compile Include="Domain\NameListEntry.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="MyPageBase.cs">
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Domain\INameListRepository.cs" />

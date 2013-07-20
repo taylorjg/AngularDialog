@@ -15,10 +15,15 @@ TODO:
 *** DONE ***
 
 - add backend setup around the new /Api/NameList service to get the e2e tests working again
+*** PROBLEM ***
+- NameList.html is not a dynamic page
+ - convert to NameList.aspx ???
+*** DONE ***
 
 - handle errors from the service
 
 - add confirmation re deletion of an item
+angular ui message ?
 
 - combine $scope functions re new/edit because they are very similar
 *** DONE ***
