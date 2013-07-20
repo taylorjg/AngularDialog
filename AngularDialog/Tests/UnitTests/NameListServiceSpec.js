@@ -26,26 +26,21 @@
 
         var _queryResponse = [{
             "Id": 1,
-            "FirstName": "Jonathan",
-            "LastName": "Taylor",
-            "Email": "jonathan.taylor@drllimited.co.uk"
+            "FirstName": "firstname1",
+            "LastName": "lastname1",
+            "Email": "firstname1.lastname1@gmail.com"
         }, {
             "Id": 2,
-            "FirstName": "Michael",
-            "LastName": "Whiteside",
-            "Email": "michael.whiteside@drllimited.co.uk"
-        }, {
-            "Id": 3,
-            "FirstName": "Russell",
-            "LastName": "Allen",
-            "Email": "russell.allen@drllimited.co.uk"
+            "FirstName": "firstname2",
+            "LastName": "lastname2",
+            "Email": "firstname2.lastname2@gmail.com"
         }];
 
         var _getResponse = {
             "Id": 2,
-            "FirstName": "Michael",
-            "LastName": "Whiteside",
-            "Email": "michael.whiteside@drllimited.co.uk"
+            "FirstName": "firstname2",
+            "LastName": "lastname2",
+            "Email": "firstname2.lastname2@gmail.com"
         };
 
         beforeEach(function () {
@@ -88,9 +83,9 @@
             // Assert
             expect(actual).toEqualData({
                 "Id": 2,
-                "FirstName": "Michael",
-                "LastName": "Whiteside",
-                "Email": "michael.whiteside@drllimited.co.uk"
+                "FirstName": "firstname2",
+                "LastName": "lastname2",
+                "Email": "firstname2.lastname2@gmail.com"
             });
 
             _httpBackend.verifyNoOutstandingRequest();

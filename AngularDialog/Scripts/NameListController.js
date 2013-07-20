@@ -30,9 +30,9 @@
                     }
                 }
             });
-            dialog.open("AddItemDialog.html", "nameList.controllers.AddItemDialogController").then(function (modifiedItem) {
-                if (modifiedItem) {
-                    nameListService.save(modifiedItem, function () {
+            dialog.open("AddItemDialog.html", "nameList.controllers.AddItemDialogController").then(function (ok) {
+                if (ok) {
+                    nameListService.save(item, function () {
                         $scope.nameListModel.items = nameListService.query();
                     });
                 }

@@ -21,6 +21,7 @@ TODO:
 *** DONE ***
 
 - handle errors from the service
+ - add a Bootstrap alert area to the bottom the page ?
 
 - add confirmation re deletion of an item
 angular ui message ?
@@ -39,14 +40,17 @@ addItemDialogModel.item.FirstName etc instead of addItemDialogModel.firstName et
 
 - add unit tests to:
  - NameListControllerSpec.js
+*** DONE ***
  - AddItemDialogControllerSpec.js
 
 - add unit tests around the new functionality (query/save/delete)
+*** NameListControllerSpec.js has been done
+*** TODO: AddItemDialogControllerSpec.js
 
 - add e2e tests around the new functionality (query/save/delete)
 
 - add karma_unit.conf.js & karma_e2e.conf.js files
- - using latest version of karma!
+*** DONE ***
 
 - create a directive for validation to reduce the amount of repeated code
 

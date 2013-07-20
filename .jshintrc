@@ -22,6 +22,8 @@
 		"input": true,
 		"element": true,
 		"select": true,
-		"expect": true
+		"expect": true,
+		"jasmine": true,
+		"spyOn": true
 	}
 }

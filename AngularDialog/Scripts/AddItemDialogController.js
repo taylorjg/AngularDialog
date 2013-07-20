@@ -16,13 +16,13 @@
         $scope.addItemDialogModel.item = item;
 
         $scope.onCancel = function () {
-            dialog.close();
+            dialog.close(false);
         };
 
         $scope.onOk = function () {
             $scope.addItemDialogForm.mySubmitAttempted = true;
             if ($scope.addItemDialogForm.$valid) {
-                dialog.close($scope.addItemDialogModel.item);
+                dialog.close(true);
             }
         };
     } ]);
