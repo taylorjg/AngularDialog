@@ -11,9 +11,7 @@
             <div class="controls">
                 <input id="firstName" type="text" class="span3" data-name="firstNameControl" data-ng-required="true" data-ng-model="addItemDialogModel.item.FirstName" />
                 <span class="required-field">*</span>
-                <span class="alert" data-ng-show="addItemDialogForm.mySubmitAttempted && addItemDialogForm.firstNameControl.$invalid">
-                    <span data-ng-show="addItemDialogForm.firstNameControl.$error.required">First name is a required field.</span>
-                </span>
+                <span class="alert" data-jt-required-field-validation-error="#firstName">First name is a required field.</span>
             </div>
         </div>
 
@@ -22,9 +20,7 @@
             <div class="controls">
                 <input id="lastName" type="text" class="span3" data-name="lastNameControl" data-ng-required="true" data-ng-model="addItemDialogModel.item.LastName" />
                 <span class="required-field">*</span>
-                <span class="alert" data-ng-show="addItemDialogForm.mySubmitAttempted && addItemDialogForm.lastNameControl.$invalid">
-                    <span data-ng-show="addItemDialogForm.lastNameControl.$error.required">Last name is a required field.</span>
-                </span>
+                <span class="alert" data-jt-required-field-validation-error="#lastName">Last name is a required field.</span>
             </div>
         </div>
 
@@ -33,18 +29,15 @@
             <div class="controls">
                 <input id="email" type="email" class="span3" data-name="emailControl" data-ng-required="true" data-ng-model="addItemDialogModel.item.Email" />
                 <span class="required-field">*</span>
-                <span class="alert" data-ng-show="addItemDialogForm.mySubmitAttempted && addItemDialogForm.emailControl.$invalid">
-                    <span data-ng-show="addItemDialogForm.emailControl.$error.required">Email address is a required field.</span>
-                    <span data-ng-show="addItemDialogForm.emailControl.$error.email">Email address not valid.</span>
-                </span>
+                <span class="alert" data-jt-required-field-validation-error="#email">Email address is a required field.</span>
+                <span class="alert" data-jt-email-validation-error="#email">Email address not valid.</span>
             </div>
         </div>
 
     </div>
 
     <div class="modal-footer">
-        <!--<button id="okBtn" class="btn btn-primary btn-small" data-ng-click="onOk()" data-ng-disabled="addItemDialogForm.$invalid">OK</button>-->
-        <button id="okBtn" class="btn btn-small btn-primary " data-ng-click="onOk()">OK</button>
+        <button id="okBtn" class="btn btn-small btn-primary" data-ng-click="onOk()">OK</button>
         <button id="cancelBtn" class="btn btn-small" data-ng-click="onCancel()">Cancel</button>
     </div>
 </div>

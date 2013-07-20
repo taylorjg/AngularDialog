@@ -10,10 +10,12 @@
 	"maxdepth": 2,
 	"strict": true,
 	"globals": {
+		"$": true,
 		"nameList": true,
 		"console": true,
 		"window": true,
 		"describe": true,
+		"xdescribe": true,
 		"it": true,
 		"xit": true,
 		"beforeEach": true,

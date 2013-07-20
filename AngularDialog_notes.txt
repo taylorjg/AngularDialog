@@ -53,7 +53,8 @@ addItemDialogModel.item.FirstName etc instead of addItemDialogModel.firstName et
 - add karma_unit.conf.js & karma_e2e.conf.js files
 *** DONE ***
 
-- create a directive for validation to reduce the amount of repeated code
+- create directives for validation to reduce the amount of repeated code
+*** DONE ***
 
 - write a readme.md with screenshots
 *** DONE ***
