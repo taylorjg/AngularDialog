@@ -19,7 +19,7 @@
 
         beforeEach(function () {
             angular.mock.module("NameListApp");
-            angular.mock.inject(function($rootScope, $controller, $dialog) {
+            angular.mock.inject(function ($rootScope, $controller, $dialog) {
                 _scope = $rootScope.$new();
                 _dialog = $dialog.dialog;
                 _controller = $controller("nameList.controllers.AddItemDialogController", {
@@ -32,6 +32,15 @@
 
         it("can construct the controller", function () {
             expect(_controller).toBeDefined();
+        });
+
+        xit("onCancel() invokes dialog.close() passing false", function () {
+        });
+
+        xit("onOk() invokes dialog.close() passing true when the form is valid", function () {
+        });
+
+        xit("onOk() does not invoke dialog.close() when the form is invalid", function () {
         });
     });
 } ());

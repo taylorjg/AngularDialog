@@ -15,6 +15,7 @@
 		"window": true,
 		"describe": true,
 		"it": true,
+		"xit": true,
 		"beforeEach": true,
 		"afterEach": true,
 		"angular": true,

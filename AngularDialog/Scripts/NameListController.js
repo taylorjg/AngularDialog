@@ -30,8 +30,8 @@
                     }
                 }
             });
-            dialog.open("AddItemDialog.html", "nameList.controllers.AddItemDialogController").then(function (ok) {
-                if (ok) {
+            dialog.open("AddItemDialog.html", "nameList.controllers.AddItemDialogController").then(function (result) {
+                if (result) {
                     nameListService.save(item, function () {
                         $scope.nameListModel.items = nameListService.query();
                     });
@@ -40,8 +40,21 @@
         };
 
         $scope.onDeleteItem = function (item) {
-            nameListService.remove(item, function () {
-                $scope.nameListModel.items = nameListService.query();
+
+            var messageBox = $dialog.messageBox(
+                "Delete Item",
+                "Are you sure you want to delete this item?",
+                [
+                    { label: "Yes", result: true, cssClass: "btn-danger" },
+                    { label: "No", result: false, cssClass: "" }
+                ]);
+
+            messageBox.open().then(function (result) {
+                if (result) {
+                    nameListService.remove(item, function () {
+                        $scope.nameListModel.items = nameListService.query();
+                    });
+                }
             });
         };
     } ]);

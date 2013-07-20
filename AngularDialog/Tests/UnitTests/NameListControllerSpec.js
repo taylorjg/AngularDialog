@@ -31,11 +31,11 @@
 
                 _dialog = $dialog;
                 _nameListService = nameListService;
-                
+
                 spyOn(_nameListService, "query").andReturn(_queryResponse);
-                
+
                 _scope = $rootScope.$new();
-                
+
                 _controller = $controller("nameList.controllers.NameListController", {
                     $scope: _scope,
                     $dialog: _dialog,
@@ -70,7 +70,7 @@
             expect(actual).toEqual({});
         });
 
-        it("onAddItem(), when dialog returns true, invokes nameListService.save() passing the correct item", function () {
+        it("onAddItem(), when the dialog returns true, invokes nameListService.save() passing the correct item", function () {
 
             // Arrange
             var dialog = { open: angular.noop };
@@ -92,7 +92,7 @@
             expect(_nameListService.save).toHaveBeenCalledWith({}, jasmine.any(Function));
         });
 
-        it("onAddItem(), when dialog returns false, does not invoke nameListService.save()", function () {
+        it("onAddItem(), when the dialog returns false, does not invoke nameListService.save()", function () {
 
             // Arrange
             var dialog = { open: angular.noop };
@@ -142,7 +142,7 @@
             expect(actual).toEqual(item);
         });
 
-        it("onEditItem(), when dialog returns true, invokes nameListService.save() passing the correct item", function () {
+        it("onEditItem(), when the dialog returns true, invokes nameListService.save() passing the correct item", function () {
 
             // Arrange
             var dialog = { open: angular.noop };
@@ -171,7 +171,7 @@
             expect(_nameListService.save).toHaveBeenCalledWith(item, jasmine.any(Function));
         });
 
-        it("onEditItem(), when dialog returns false, does not invoke nameListService.save()", function () {
+        it("onEditItem(), when the dialog returns false, does not invoke nameListService.save()", function () {
 
             // Arrange
             var dialog = { open: angular.noop };
@@ -193,9 +193,19 @@
             expect(_nameListService.save).not.toHaveBeenCalled();
         });
 
-        it("onDeleteItem() invokes nameListService.remove() passing the correct item", function () {
+        it("onDeleteItem(), when the message box returns true, invokes nameListService.remove() passing the correct item", function () {
 
             // Arrange
+            var messageBox = { open: angular.noop };
+            spyOn(_dialog, "messageBox").andCallFake(function () {
+                return messageBox;
+            });
+            spyOn(messageBox, "open").andCallFake(function () {
+                return {
+                    then: function (fn) { fn(true); }
+                };
+            });
+
             spyOn(_nameListService, "remove");
 
             var item = {
@@ -210,6 +220,35 @@
 
             // Assert
             expect(_nameListService.remove).toHaveBeenCalledWith(item, jasmine.any(Function));
+        });
+
+        it("onDeleteItem(), when the message box returns false, does not invoke nameListService.remove()", function () {
+
+            // Arrange
+            var messageBox = { open: angular.noop };
+            spyOn(_dialog, "messageBox").andCallFake(function () {
+                return messageBox;
+            });
+            spyOn(messageBox, "open").andCallFake(function () {
+                return {
+                    then: function (fn) { fn(false); }
+                };
+            });
+
+            spyOn(_nameListService, "remove");
+
+            var item = {
+                Id: 123,
+                FirstName: "TestF",
+                LastName: "TestL",
+                Email: "TestE"
+            };
+
+            // Act
+            _scope.onDeleteItem(item);
+
+            // Assert
+            expect(_nameListService.remove).not.toHaveBeenCalled();
         });
     });
 } ());

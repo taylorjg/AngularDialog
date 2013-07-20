@@ -24,7 +24,8 @@ TODO:
  - add a Bootstrap alert area to the bottom the page ?
 
 - add confirmation re deletion of an item
-angular ui message ?
+UI Bootstrap $dialog.messageBox() ?
+*** DONE ***
 
 - combine $scope functions re new/edit because they are very similar
 *** DONE ***
@@ -55,4 +56,5 @@ addItemDialogModel.item.FirstName etc instead of addItemDialogModel.firstName et
 - create a directive for validation to reduce the amount of repeated code
 
 - write a readme.md with screenshots
+*** DONE ***
 
