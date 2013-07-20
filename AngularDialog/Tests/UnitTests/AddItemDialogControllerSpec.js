@@ -20,8 +20,12 @@
         beforeEach(function () {
             angular.mock.module("NameListApp");
             angular.mock.inject(function ($rootScope, $controller, $dialog) {
+
                 _scope = $rootScope.$new();
-                _dialog = $dialog.dialog;
+                _scope.addItemDialogForm = {};
+
+                _dialog = $dialog.dialog();
+
                 _controller = $controller("nameList.controllers.AddItemDialogController", {
                     $scope: _scope,
                     dialog: _dialog,
@@ -34,13 +38,42 @@
             expect(_controller).toBeDefined();
         });
 
-        xit("onCancel() invokes dialog.close() passing false", function () {
+        it("onCancel() invokes dialog.close() passing false", function () {
+
+            // Arrange
+            spyOn(_dialog, "close");
+
+            // Act
+            _scope.onCancel();
+
+            // Assert
+            expect(_dialog.close).toHaveBeenCalledWith(false);
         });
 
-        xit("onOk() invokes dialog.close() passing true when the form is valid", function () {
+        it("onOk() invokes dialog.close() passing true when the form is valid", function () {
+
+            // Arrange
+            _scope.addItemDialogForm.$valid = true;
+            spyOn(_dialog, "close");
+
+            // Act
+            _scope.onOk();
+
+            // Assert
+            expect(_dialog.close).toHaveBeenCalledWith(true);
         });
 
-        xit("onOk() does not invoke dialog.close() when the form is invalid", function () {
+        it("onOk() does not invoke dialog.close() when the form is invalid", function () {
+
+            // Arrange
+            _scope.addItemDialogForm.$valid = false;
+            spyOn(_dialog, "close");
+
+            // Act
+            _scope.onOk();
+
+            // Assert
+            expect(_dialog.close).not.toHaveBeenCalled();
         });
     });
 } ());

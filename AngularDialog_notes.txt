@@ -38,17 +38,16 @@ addItemDialogModel.item.FirstName etc instead of addItemDialogModel.firstName et
 
 - set the initial focus to the firstname field in the dialog
  - need to use a directive ?
+ - http://stackoverflow.com/questions/14833326/how-to-set-focus-in-angularjs
 
-- add unit tests to:
- - NameListControllerSpec.js
+- add unit tests around the new functionality (query/save/remove)
 *** DONE ***
- - AddItemDialogControllerSpec.js
 
-- add unit tests around the new functionality (query/save/delete)
-*** NameListControllerSpec.js has been done
-*** TODO: AddItemDialogControllerSpec.js
-
-- add e2e tests around the new functionality (query/save/delete)
+- add e2e tests around the new functionality (query/save/remove)
+ - query		*** DONE ***
+ - save (new item)	*** DONE ***
+ - save (edit item)	(TODO)
+ - remove		(TODO)
 
 - add karma_unit.conf.js & karma_e2e.conf.js files
 *** DONE ***
@@ -58,4 +57,6 @@ addItemDialogModel.item.FirstName etc instead of addItemDialogModel.firstName et
 
 - write a readme.md with screenshots
 *** DONE ***
+
+- rename AddItemDialog to EditItemDialog
 
