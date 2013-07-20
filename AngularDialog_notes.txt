@@ -39,6 +39,7 @@ addItemDialogModel.item.FirstName etc instead of addItemDialogModel.firstName et
 - set the initial focus to the firstname field in the dialog
  - need to use a directive ?
  - http://stackoverflow.com/questions/14833326/how-to-set-focus-in-angularjs
+*** DONE ***
 
 - add unit tests around the new functionality (query/save/remove)
 *** DONE ***
@@ -59,4 +60,6 @@ addItemDialogModel.item.FirstName etc instead of addItemDialogModel.firstName et
 *** DONE ***
 
 - rename AddItemDialog to EditItemDialog
+
+- set title of the dialog appropriately - add item/edit item
 

@@ -26,6 +26,7 @@
         <script src="Scripts/NameListService.js" type="text/javascript"></script>
         <script src="Scripts/jtRequiredFieldValidationError.js" type="text/javascript"></script>
         <script src="Scripts/jtEmailValidationError.js" type="text/javascript"></script>
+        <script src="Scripts/jtSetFocus.js" type="text/javascript"></script>
         <% if (IsInAngularJsEndToEndTestMode) { %>
             <script src="Tests/EndToEndTests/EndToEndTestHttpBackendSetup.js" type="text/javascript"></script>
             <script src="Scripts/ThirdParty/AngularJS/angular-mocks.js" type="text/javascript"></script>

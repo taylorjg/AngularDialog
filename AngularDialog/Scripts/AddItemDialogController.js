@@ -14,6 +14,7 @@
 
         $scope.addItemDialogModel = new nameList.models.AddItemDialogModel();
         $scope.addItemDialogModel.item = item;
+        $scope.setFocusToFirstNameField = true;
 
         $scope.onCancel = function () {
             dialog.close(false);

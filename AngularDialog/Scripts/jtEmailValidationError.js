@@ -24,7 +24,6 @@
                 });
 
                 scope.$watch(watchExpression, function (newValue) {
-                    console.log("$watch function - newValue: " + newValue);
                     if (newValue) {
                         iElement.show();
                     } else {

@@ -77,6 +77,7 @@
     <Content Include="Scripts\AddItemDialogController.js" />
     <Content Include="Scripts\app.js" />
     <Content Include="Scripts\jtEmailValidationError.js" />
+    <Content Include="Scripts\jtSetFocus.js" />
     <Content Include="Scripts\NameListService.js" />
     <Content Include="Scripts\PollyFill\html5shiv.js" />
     <Content Include="Scripts\PollyFill\json2.js" />

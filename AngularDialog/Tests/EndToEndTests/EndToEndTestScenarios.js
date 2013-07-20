@@ -16,7 +16,7 @@
         };
 
         describe("main page", function () {
-            
+
             it("initially displays 2 items in the table", function () {
                 browser().navigateTo(urlWithTestIdentifier(1));
                 expect(window.repeater("table tbody tr").count()).toBe(2);
@@ -26,7 +26,7 @@
         });
 
         describe("adding an item", function () {
-            
+
             it("clicking the ok button in the AddItem dialog box appends a new item to the table", function () {
                 browser().navigateTo(urlWithTestIdentifier(2));
                 expect(window.repeater("table tbody tr").count()).toBe(2);
@@ -66,13 +66,18 @@
             });
         });
 
-        xdescribe("editing an item", function() {
+        xdescribe("editing an item", function () {
         });
 
-        xdescribe("deleting an item", function() {
+        xdescribe("deleting an item", function () {
         });
 
         describe("dialog form validation", function () {
+
+            xit("sets focus to the first name field initially", function() {
+                browser().navigateTo(urlWithTestIdentifier(1));
+                element("#addItemBtn").click();
+            });
 
             it("hides all validation error messages initially", function () {
                 browser().navigateTo(urlWithTestIdentifier(1));

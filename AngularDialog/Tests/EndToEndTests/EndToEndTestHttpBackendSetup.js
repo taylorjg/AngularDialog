@@ -58,7 +58,6 @@
             
             $httpBackend.whenGET(/\/Api\/NameList$/).respond(function () {
                 queryCount++;
-                console.log("queryCount: " + queryCount);
                 if (queryCount === 1) {
                     return [200, _queryResponse2Items];
                 }
