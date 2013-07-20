@@ -1,0 +1,29 @@
+{
+  "name": "AngularDialog",
+  "version": "0.0.1",
+  "description": "AngularJS app with a dialog - experimenting with validation, unit tests and e2e tests",
+  "main": "Gruntfile.js",
+  "dependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-jshint": "~0.5.4",
+    "grunt-contrib-watch": "~0.4.4",
+    "phantomjs": "~1.9.1-0",
+    "karma": "~0.8.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "karma start karma_unit.conf.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/taylorjg/AngularDialog.git"
+  },
+  "keywords": [
+    "AngularJS",
+    "e2e",
+    "testing"
+  ],
+  "author": "Jonathan Taylor",
+  "license": "BSD",
+  "readmeFilename": "README.md"
+}
