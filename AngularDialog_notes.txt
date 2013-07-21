@@ -60,11 +60,16 @@ addItemDialogModel.item.FirstName etc instead of addItemDialogModel.firstName et
 - create directives for validation to reduce the amount of repeated code
 *** DONE ***
 
+- how to factor out common code in directives ?
+ - jtEmailValidationError.js & jtRequiredFieldValidationError.js
+*** DONE ***
+
 - write a readme.md with screenshots
 *** DONE ***
 
-- rename AddItemDialog to EditItemDialog
+- rename AddItemDialog to EditItemDialog ?
 
 - set title of the dialog appropriately - add item/edit item
 *** DONE ***
 
+- need to redo screenshots - especially the add/edit ones

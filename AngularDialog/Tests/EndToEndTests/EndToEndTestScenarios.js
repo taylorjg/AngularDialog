@@ -67,6 +67,15 @@
         });
 
         describe("editing an item", function () {
+
+            it("when an item is edited, the dialog controls are populated correctly", function() {
+                browser().navigateTo(urlWithTestIdentifier(3));
+                window.using("table tbody tr:nth-of-type(2)").element(".editBtn").click();
+                expect(element("#firstName").val()).toBe("firstname2");
+                expect(element("#lastName").val()).toBe("lastname2");
+                expect(element("#email").val()).toBe("firstname2.lastname2@gmail.com");
+            });
+            
             it("an item can be edited", function () {
                 browser().navigateTo(urlWithTestIdentifier(3));
                 window.using("table tbody tr:nth-of-type(2)").element(".editBtn").click();
@@ -104,6 +113,7 @@
             it("sets focus to the first name field initially", function () {
                 browser().navigateTo(urlWithTestIdentifier(1));
                 element("#addItemBtn").click();
+                expect(element("#firstName").val()).toBe("");
                 expect(element("#firstName:focus").count()).toBe(1);
             });
 
