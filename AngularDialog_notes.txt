@@ -20,8 +20,12 @@ TODO:
  - convert to NameList.aspx ???
 *** DONE ***
 
+
+
 - handle errors from the service
  - add a Bootstrap alert area to the bottom the page ?
+
+
 
 - add confirmation re deletion of an item
 UI Bootstrap $dialog.messageBox() ?
@@ -47,8 +51,8 @@ addItemDialogModel.item.FirstName etc instead of addItemDialogModel.firstName et
 - add e2e tests around the new functionality (query/save/remove)
  - query		*** DONE ***
  - save (new item)	*** DONE ***
- - save (edit item)	(TODO)
- - remove		(TODO)
+ - save (edit item)	*** DONE ***
+ - remove		*** DONE ***
 
 - add karma_unit.conf.js & karma_e2e.conf.js files
 *** DONE ***
@@ -62,4 +66,5 @@ addItemDialogModel.item.FirstName etc instead of addItemDialogModel.firstName et
 - rename AddItemDialog to EditItemDialog
 
 - set title of the dialog appropriately - add item/edit item
+*** DONE ***
 

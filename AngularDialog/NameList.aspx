@@ -57,8 +57,8 @@
                                 <td>{{item.LastName}}</td>
                                 <td>{{item.Email}}</td>
                                 <td>
-                                    <button class="btn btn-primary btn-small" data-ng-click="onEditItem(item)">Edit</button>
-                                    <button class="btn btn-danger btn-small" data-ng-click="onDeleteItem(item)">Delete</button>
+                                    <button class="btn btn-primary btn-small editBtn" data-ng-click="onEditItem(item)">Edit</button>
+                                    <button class="btn btn-danger btn-small deleteBtn" data-ng-click="onDeleteItem(item)">Delete</button>
                                 </td>
                             </tr>
                         </tbody>

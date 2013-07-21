@@ -45,8 +45,8 @@
                 "Delete Item",
                 "Are you sure you want to delete this item?",
                 [
-                    { label: "Yes", result: true, cssClass: "btn-danger" },
-                    { label: "No", result: false, cssClass: "" }
+                    { label: "Yes", result: true, cssClass: "btn-danger deleteYesBtn" },
+                    { label: "No", result: false, cssClass: "deleteNoBtn" }
                 ]);
 
             messageBox.open().then(function (result) {

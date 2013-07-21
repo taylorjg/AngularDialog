@@ -66,17 +66,45 @@
             });
         });
 
-        xdescribe("editing an item", function () {
+        describe("editing an item", function () {
+            it("an item can be edited", function () {
+                browser().navigateTo(urlWithTestIdentifier(3));
+                window.using("table tbody tr:nth-of-type(2)").element(".editBtn").click();
+                input("addItemDialogModel.item.FirstName").enter("firstname2-new");
+                input("addItemDialogModel.item.LastName").enter("lastname2-new");
+                element("#okBtn").click();
+                expect(window.repeater("table tbody tr").count()).toBe(2);
+                expect(window.repeater("table tbody tr").row(0)).toEqual(["1", "firstname1", "lastname1", "firstname1.lastname1@gmail.com"]);
+                expect(window.repeater("table tbody tr").row(1)).toEqual(["2", "firstname2-new", "lastname2-new", "firstname2.lastname2@gmail.com"]);
+            });
         });
 
-        xdescribe("deleting an item", function () {
+        describe("deleting an item", function () {
+
+            it("item is deleted when clicking the item's Delete button and then clicking the Yes button", function () {
+                browser().navigateTo(urlWithTestIdentifier(4));
+                window.using("table tbody tr:nth-of-type(2)").element(".deleteBtn").click();
+                element(".deleteYesBtn").click();
+                expect(window.repeater("table tbody tr").count()).toBe(1);
+                expect(window.repeater("table tbody tr").row(0)).toEqual(["1", "firstname1", "lastname1", "firstname1.lastname1@gmail.com"]);
+            });
+
+            it("item is not deleted when clicking the item's Delete button and then clicking the No button", function () {
+                browser().navigateTo(urlWithTestIdentifier(4));
+                window.using("table tbody tr:nth-of-type(2)").element(".deleteBtn").click();
+                element(".deleteNoBtn").click();
+                expect(window.repeater("table tbody tr").count()).toBe(2);
+                expect(window.repeater("table tbody tr").row(0)).toEqual(["1", "firstname1", "lastname1", "firstname1.lastname1@gmail.com"]);
+                expect(window.repeater("table tbody tr").row(1)).toEqual(["2", "firstname2", "lastname2", "firstname2.lastname2@gmail.com"]);
+            });
         });
 
         describe("dialog form validation", function () {
 
-            xit("sets focus to the first name field initially", function() {
+            it("sets focus to the first name field initially", function () {
                 browser().navigateTo(urlWithTestIdentifier(1));
                 element("#addItemBtn").click();
+                expect(element("#firstName:focus").count()).toBe(1);
             });
 
             it("hides all validation error messages initially", function () {
