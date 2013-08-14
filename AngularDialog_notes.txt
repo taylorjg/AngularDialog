@@ -72,4 +72,19 @@ addItemDialogModel.item.FirstName etc instead of addItemDialogModel.firstName et
 - set title of the dialog appropriately - add item/edit item
 *** DONE ***
 
-- need to redo screenshots - especially the add/edit ones
+- need to redo all 3 screenshots
+ - for the validation errors one, show a required field error and an email error
+ - and add screenshot of karma start karma_unit.conf.js
+ - and add screenshot of karma start karma_e2e.conf.js
+
+- optimistic locking of the repo + conflict resolution ?
+
+- add a document database implementation of the repo interface ?
+ - but which one ?
+  - what are the choices ?
+  - which ones are available via NuGet ?
+http://ravendb.net/learn
+
+- add signalr support i.e. broadcast repo changes ?
+
+
