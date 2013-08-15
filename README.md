@@ -38,11 +38,11 @@ The following screenshot shows validation errors whilst trying to add an item wi
 
 ![Screenshot3](https://raw.github.com/taylorjg/AngularDialog/master/Images/AngularDialog_screenshot3.png)
 
-The following screenshot shows the unit tests running via Karma:
+The following screenshot shows the unit tests running via Karma (using karma-spec-reporter to report progress):
 
 ![Screenshot4](https://raw.github.com/taylorjg/AngularDialog/master/Images/AngularDialog_screenshot4.png)
 
-The following screenshot shows the end-to-end tests running via Karma:
+The following screenshot shows the end-to-end tests running via Karma (using karma-spec-reporter to report progress):
 
 ![Screenshot5](https://raw.github.com/taylorjg/AngularDialog/master/Images/AngularDialog_screenshot5.png)
 
