@@ -34,7 +34,7 @@ The following screenshot shows the dialog whilst editing a row from the table:
 
 ![Screenshot2](https://raw.github.com/taylorjg/AngularDialog/master/Images/AngularDialog_screenshot2.png)
 
-The following screenshot shows validation errors whilst trying to close the dialog:
+The following screenshot shows validation errors whilst trying to add an item but some fields are blank:
 
 ![Screenshot3](https://raw.github.com/taylorjg/AngularDialog/master/Images/AngularDialog_screenshot3.png)
 
