@@ -30,13 +30,21 @@ The following screenshot shows the main page with its table of contact details:
 
 ![Screenshot1](https://raw.github.com/taylorjg/AngularDialog/master/Images/AngularDialog_screenshot1.png)
 
-The following screenshot shows the dialog whilst editing a row from the table:
+The following screenshot shows an item being edited:
 
 ![Screenshot2](https://raw.github.com/taylorjg/AngularDialog/master/Images/AngularDialog_screenshot2.png)
 
-The following screenshot shows validation errors whilst trying to add an item but some fields are blank:
+The following screenshot shows validation errors whilst trying to add an item with some blank fields:
 
 ![Screenshot3](https://raw.github.com/taylorjg/AngularDialog/master/Images/AngularDialog_screenshot3.png)
+
+The following screenshot shows the unit tests running via Karma:
+
+![Screenshot4](https://raw.github.com/taylorjg/AngularDialog/master/Images/AngularDialog_screenshot4.png)
+
+The following screenshot shows the end-to-end tests running via Karma:
+
+![Screenshot5](https://raw.github.com/taylorjg/AngularDialog/master/Images/AngularDialog_screenshot5.png)
 
 ## Links
 
