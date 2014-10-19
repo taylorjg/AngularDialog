@@ -1,4 +1,4 @@
-﻿/// <reference path="ThirdParty/AngularJS/angular.js" />
+﻿/// <reference path="ThirdParty/AngularJS/1.3.0/angular.js" />
 /// <reference path="models.js" />
 
 // ReSharper disable InconsistentNaming

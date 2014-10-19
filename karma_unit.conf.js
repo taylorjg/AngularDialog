@@ -14,9 +14,9 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-		"AngularDialog/Scripts/ThirdParty/AngularJS/angular.js",
-		"AngularDialog/Scripts/ThirdParty/AngularJS/angular-resource.js",
-		"AngularDialog/Scripts/ThirdParty/AngularJS/angular-mocks.js",
+		"AngularDialog/Scripts/ThirdParty/AngularJS/1.3.0/angular.js",
+		"AngularDialog/Scripts/ThirdParty/AngularJS/1.3.0/angular-resource.js",
+		"AngularDialog/Scripts/ThirdParty/AngularJS/1.3.0/angular-mocks.js",
 		"AngularDialog/Scripts/ThirdParty/AngularUI/angular-ui.js",
 		"AngularDialog/Scripts/ThirdParty/AngularUIBootstrap/ui-bootstrap-tpls-0.2.0.js",
 		"AngularDialog/Scripts/app.js", // ensure app.js is listed first to avoid "Error: No module: NameListApp"

@@ -1,5 +1,5 @@
-﻿/// <reference path="../../Scripts/ThirdParty/AngularJS/angular-scenario.js" />
-/// <reference path="../../Scripts/ThirdParty/AngularJS/angular-mocks.js" />
+﻿/// <reference path="../../Scripts/ThirdParty/AngularJS/1.3.0/angular-scenario.js" />
+/// <reference path="../../Scripts/ThirdParty/AngularJS/1.3.0/angular-mocks.js" />
 
 // ReSharper disable InconsistentNaming
 

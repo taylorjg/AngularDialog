@@ -1,14 +1,14 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AngularDialog", "AngularDialog\AngularDialog.csproj", "{22E64F66-65C1-48E9-8DE5-996B1FF2D136}"
-EndProject
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{2380D55B-9FCD-4058-9A20-81F2C7F6040F}"
 	ProjectSection(SolutionItems) = preProject
 		.nuget\NuGet.Config = .nuget\NuGet.Config
 		.nuget\NuGet.exe = .nuget\NuGet.exe
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AngularDialog", "AngularDialog\AngularDialog.csproj", "{22E64F66-65C1-48E9-8DE5-996B1FF2D136}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AngularDialogTests", "AngularDialogTests\AngularDialogTests.csproj", "{0DA7BFFE-B76D-46E1-96D7-AA6C8C60F3BA}"
 EndProject
