@@ -9,26 +9,31 @@
 	var urlWithTestIdentifier = function (testIdentifier) {
 		return BASE_URL + "?e2etest=" + testIdentifier;
 	};
-	
-	var checkNameListRows = function(expectedRows) {
-	    var actualRows = [];
-	    var items = element.all(by.repeater("item in nameListModel.items"));
-		items.map(function (item) {
-		    var actualRow = [];
-		    item.all(by.css("td")).map(function (td) {
-		        td.getText().then(function (text) {
-		            actualRow.push(text);
-		        });
-		    }).then(function() {
-		        actualRows.push(actualRow.slice(0, 4));
-		    });
-		}).then(function() {
-		    expect(actualRows.length).toBe(expectedRows.length);
-		    for (var i = 0; i < actualRows.length; i++) {
-		        expect(actualRows[i]).toEqual(expectedRows[i]);
-		    }
-		});
-	};
+
+    var checkNameListRows = function(expectedRows) {
+        var actualRows = [];
+        var rowElements = element.all(by.repeater("item in nameListModel.items"));
+        rowElements.map(function(rowElement) {
+            var column1Element = rowElement.element(by.binding("item.Id"));
+            var column2Element = rowElement.element(by.binding("item.FirstName"));
+            var column3Element = rowElement.element(by.binding("item.LastName"));
+            var column4Element = rowElement.element(by.binding("item.Email"));
+            column1Element.getText().then(function(id) {
+                column2Element.getText().then(function (firstName) {
+                    column3Element.getText().then(function (lastName) {
+                        column4Element.getText().then(function (email) {
+                            actualRows.push([id, firstName, lastName, email]);
+                        });
+                    });
+                });
+            });
+        }).then(function() {
+            expect(actualRows.length).toBe(expectedRows.length);
+            for (var i = 0; i < actualRows.length; i++) {
+                expect(actualRows[i]).toEqual(expectedRows[i]);
+            }
+        });
+    };
 
     describe("AngularDialog End-to-End Tests", function () {
 
