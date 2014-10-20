@@ -107,7 +107,7 @@
                 expect(element(by.model("addItemDialogModel.item.Email")).getAttribute("value")).toBe("firstname2.lastname2@gmail.com");
             });
 
-            iit("an item can be edited", function () {
+            it("an item can be edited", function () {
                 browser.get(urlWithTestIdentifier(3));
                 element.all(by.repeater("item in nameListModel.items")).get(1).element(by.css(".editBtn")).click();
                 element(by.model("addItemDialogModel.item.FirstName")).clear().sendKeys("firstname2-new");
@@ -116,6 +116,28 @@
                 checkNameListRows([
                     ["1", "firstname1", "lastname1", "firstname1.lastname1@gmail.com"],
                     ["2", "firstname2-new", "lastname2-new", "firstname2.lastname2@gmail.com"]
+                ]);
+            });
+        });
+        
+        describe("deleting an item", function () {
+
+            it("item is deleted when clicking the item's Delete button and then clicking the Yes button", function () {
+                browser.get(urlWithTestIdentifier(4));
+                element.all(by.repeater("item in nameListModel.items")).get(1).element(by.css(".deleteBtn")).click();
+                element(by.css(".deleteYesBtn")).click();
+                checkNameListRows([
+                    ["1", "firstname1", "lastname1", "firstname1.lastname1@gmail.com"]
+                ]);
+            });
+
+            it("item is not deleted when clicking the item's Delete button and then clicking the No button", function () {
+                browser.get(urlWithTestIdentifier(4));
+                element.all(by.repeater("item in nameListModel.items")).get(1).element(by.css(".deleteBtn")).click();
+                element(by.css(".deleteNoBtn")).click();
+                checkNameListRows([
+                    ["1", "firstname1", "lastname1", "firstname1.lastname1@gmail.com"],
+                    ["2", "firstname2", "lastname2", "firstname2.lastname2@gmail.com"]
                 ]);
             });
         });
