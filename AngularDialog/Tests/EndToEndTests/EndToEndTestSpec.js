@@ -35,6 +35,10 @@
         });
     };
 
+    var checkNumNameListRows = function(expectedNumRows) {
+        expect(element.all(by.repeater("item in nameListModel.items")).count()).toBe(expectedNumRows);
+    };
+
     describe("AngularDialog End-to-End Tests", function () {
 
         describe("main page", function() {
@@ -52,6 +56,18 @@
 
             it("clicking the ok button in the AddItem dialog box appends a new item to the table", function () {
                 browser.get(urlWithTestIdentifier(2));
+                checkNumNameListRows(2);
+                element(by.id("addItemBtn")).click();
+                element(by.model("addItemDialogModel.item.FirstName")).sendKeys("firstname3");
+                element(by.model("addItemDialogModel.item.LastName")).sendKeys("lastname3");
+                element(by.model("addItemDialogModel.item.Email")).sendKeys("firstname3.lastname3@gmail.com");
+                element(by.id("okBtn")).click();
+                checkNumNameListRows(3);
+            });
+            
+            it("item added via the AddItem dialog box has the correct values", function () {
+                browser.get(urlWithTestIdentifier(2));
+                checkNumNameListRows(2);
                 element(by.id("addItemBtn")).click();
                 element(by.model("addItemDialogModel.item.FirstName")).sendKeys("firstname3");
                 element(by.model("addItemDialogModel.item.LastName")).sendKeys("lastname3");
@@ -62,6 +78,22 @@
                     ["2", "firstname2", "lastname2", "firstname2.lastname2@gmail.com"],
                     ["3", "firstname3", "lastname3", "firstname3.lastname3@gmail.com"]
                 ]);
+            });
+
+            it("clicking the cancel button in the AddItem dialog box does not append a new item to the table", function () {
+                browser.get(urlWithTestIdentifier(1));
+                checkNumNameListRows(2);
+                element(by.id("addItemBtn")).click();
+                element(by.id("cancelBtn")).click();
+                checkNumNameListRows(2);
+            });
+            
+            it("clicking the close button in the AddItem dialog box does not append a new item to the table", function () {
+                browser.get(urlWithTestIdentifier(1));
+                checkNumNameListRows(2);
+                element(by.id("addItemBtn")).click();
+                element(by.id("closeBtn")).click();
+                checkNumNameListRows(2);
             });
         });
     });
