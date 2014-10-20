@@ -1,4 +1,6 @@
-(function() {
+/* global describe, it, expect, browser, element, by */
+
+(function () {
 
     "use strict";
 
@@ -44,10 +46,11 @@
         };
         var actual = element.all(locator).reduce(function(acc, elem) {
             return elem.isDisplayed().then(function(isDisplayed) {
-                if (isDisplayed)
+                if (isDisplayed) {
                     acc.numVisible = acc.numVisible + 1;
-                else
+                } else {
                     acc.numHidden = acc.numHidden + 1;
+                }
                 return acc;
             });
         }, seed);
