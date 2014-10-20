@@ -1,4 +1,6 @@
-/* global describe, it, expect, browser, element, by */
+/* global describe, beforeEach, it, expect, browser, element, by */
+
+// ReSharper disable InconsistentNaming
 
 (function () {
 
@@ -61,12 +63,67 @@
         expect(actual).toEqual(expected);
     };
 
-    describe("AngularDialog End-to-End Tests", function() {
+    var NameListPage = function() {
+        this.addItemBtn = element(by.id("addItemBtn"));
+        this.getEditBtnForRowIndex = function(rowIndex) {
+            return element.all(by.repeater("item in nameListModel.items")).get(rowIndex).element(by.css(".editBtn"));
+        };
+        this.getDeleteBtnForRowIndex = function(rowIndex) {
+            return element.all(by.repeater("item in nameListModel.items")).get(rowIndex).element(by.css(".deleteBtn"));
+        };
+        this.get = function (testIdentifier) {
+            browser.get(urlWithTestIdentifier(testIdentifier));
+        };
+    };
+
+    var AddItemDialog = function() {
+        this.firstName = element(by.model("addItemDialogModel.item.FirstName"));
+        this.lastName = element(by.model("addItemDialogModel.item.LastName"));
+        this.email = element(by.model("addItemDialogModel.item.Email"));
+        this.okBtn = element(by.id("okBtn"));
+        this.cancelBtn = element(by.id("cancelBtn"));
+        this.closeBtn = element(by.id("closeBtn"));
+        this.setFirstName = function(value) {
+            this.firstName.sendKeys(value);
+        };
+        this.setLastName = function(value) {
+            this.lastName.sendKeys(value);
+        };
+        this.setEmail = function(value) {
+            this.email.sendKeys(value);
+        };
+        this.clearFirstName = function() {
+            this.firstName.clear();
+        };
+        this.clearLastName = function() {
+            this.lastName.clear();
+        };
+        this.clearEmail = function() {
+            this.email.clear();
+        };
+    };
+
+    var DeleteItemDialog = function() {
+        this.deleteYesBtn = element(by.css(".deleteYesBtn"));
+        this.deleteNoBtn = element(by.css(".deleteNoBtn"));
+    };
+
+    describe("AngularDialog End-to-End Tests", function () {
+
+        var nameListPage;
+        var addItemDialog;
+        var deleteItemDialog;
+
+        beforeEach(function() {
+            nameListPage = new NameListPage();
+            addItemDialog = new AddItemDialog();
+            deleteItemDialog = new DeleteItemDialog();
+        });
 
         describe("main page", function() {
 
-            it("initially displays 2 items in the table", function() {
-                browser.get(urlWithTestIdentifier(1));
+            it("initially displays 2 items in the table", function () {
+                nameListPage.get(1);
                 checkNameListRows([
                     ["1", "firstname1", "lastname1", "firstname1.lastname1@gmail.com"],
                     ["2", "firstname2", "lastname2", "firstname2.lastname2@gmail.com"]
@@ -77,24 +134,24 @@
         describe("adding an item", function() {
 
             it("clicking the ok button in the AddItem dialog box appends a new item to the table", function() {
-                browser.get(urlWithTestIdentifier(2));
+                nameListPage.get(2);
                 checkNumNameListRows(2);
-                element(by.id("addItemBtn")).click();
-                element(by.model("addItemDialogModel.item.FirstName")).sendKeys("firstname3");
-                element(by.model("addItemDialogModel.item.LastName")).sendKeys("lastname3");
-                element(by.model("addItemDialogModel.item.Email")).sendKeys("firstname3.lastname3@gmail.com");
-                element(by.id("okBtn")).click();
+                nameListPage.addItemBtn.click();
+                addItemDialog.setFirstName("firstname3");
+                addItemDialog.setLastName("lastname3");
+                addItemDialog.setEmail("firstname3.lastname3@gmail.com");
+                addItemDialog.okBtn.click();
                 checkNumNameListRows(3);
             });
 
             it("item added via the AddItem dialog box has the correct values", function() {
-                browser.get(urlWithTestIdentifier(2));
+                nameListPage.get(2);
                 checkNumNameListRows(2);
-                element(by.id("addItemBtn")).click();
-                element(by.model("addItemDialogModel.item.FirstName")).sendKeys("firstname3");
-                element(by.model("addItemDialogModel.item.LastName")).sendKeys("lastname3");
-                element(by.model("addItemDialogModel.item.Email")).sendKeys("firstname3.lastname3@gmail.com");
-                element(by.id("okBtn")).click();
+                nameListPage.addItemBtn.click();
+                addItemDialog.setFirstName("firstname3");
+                addItemDialog.setLastName("lastname3");
+                addItemDialog.setEmail("firstname3.lastname3@gmail.com");
+                addItemDialog.okBtn.click();
                 checkNameListRows([
                     ["1", "firstname1", "lastname1", "firstname1.lastname1@gmail.com"],
                     ["2", "firstname2", "lastname2", "firstname2.lastname2@gmail.com"],
@@ -103,18 +160,18 @@
             });
 
             it("clicking the cancel button in the AddItem dialog box does not append a new item to the table", function() {
-                browser.get(urlWithTestIdentifier(1));
+                nameListPage.get(1);
                 checkNumNameListRows(2);
-                element(by.id("addItemBtn")).click();
-                element(by.id("cancelBtn")).click();
+                nameListPage.addItemBtn.click();
+                addItemDialog.cancelBtn.click();
                 checkNumNameListRows(2);
             });
 
             it("clicking the close button in the AddItem dialog box does not append a new item to the table", function() {
-                browser.get(urlWithTestIdentifier(1));
+                nameListPage.get(1);
                 checkNumNameListRows(2);
-                element(by.id("addItemBtn")).click();
-                element(by.id("closeBtn")).click();
+                nameListPage.addItemBtn.click();
+                addItemDialog.closeBtn.click();
                 checkNumNameListRows(2);
             });
         });
@@ -122,19 +179,21 @@
         describe("editing an item", function() {
 
             it("when an item is edited, the dialog controls are populated correctly", function() {
-                browser.get(urlWithTestIdentifier(3));
-                element.all(by.repeater("item in nameListModel.items")).get(1).element(by.css(".editBtn")).click();
-                expect(element(by.model("addItemDialogModel.item.FirstName")).getAttribute("value")).toBe("firstname2");
-                expect(element(by.model("addItemDialogModel.item.LastName")).getAttribute("value")).toBe("lastname2");
-                expect(element(by.model("addItemDialogModel.item.Email")).getAttribute("value")).toBe("firstname2.lastname2@gmail.com");
+                nameListPage.get(3);
+                nameListPage.getEditBtnForRowIndex(1).click();
+                expect(addItemDialog.firstName.getAttribute("value")).toBe("firstname2");
+                expect(addItemDialog.lastName.getAttribute("value")).toBe("lastname2");
+                expect(addItemDialog.email.getAttribute("value")).toBe("firstname2.lastname2@gmail.com");
             });
 
             it("an item can be edited", function() {
-                browser.get(urlWithTestIdentifier(3));
-                element.all(by.repeater("item in nameListModel.items")).get(1).element(by.css(".editBtn")).click();
-                element(by.model("addItemDialogModel.item.FirstName")).clear().sendKeys("firstname2-new");
-                element(by.model("addItemDialogModel.item.LastName")).clear().sendKeys("lastname2-new");
-                element(by.id("okBtn")).click();
+                nameListPage.get(3);
+                nameListPage.getEditBtnForRowIndex(1).click();
+                addItemDialog.clearFirstName();
+                addItemDialog.clearLastName();
+                addItemDialog.setFirstName("firstname2-new");
+                addItemDialog.setLastName("lastname2-new");
+                addItemDialog.okBtn.click();
                 checkNameListRows([
                     ["1", "firstname1", "lastname1", "firstname1.lastname1@gmail.com"],
                     ["2", "firstname2-new", "lastname2-new", "firstname2.lastname2@gmail.com"]
@@ -145,18 +204,18 @@
         describe("deleting an item", function() {
 
             it("item is deleted when clicking the item's Delete button and then clicking the Yes button", function() {
-                browser.get(urlWithTestIdentifier(4));
-                element.all(by.repeater("item in nameListModel.items")).get(1).element(by.css(".deleteBtn")).click();
-                element(by.css(".deleteYesBtn")).click();
+                nameListPage.get(4);
+                nameListPage.getDeleteBtnForRowIndex(1).click();
+                deleteItemDialog.deleteYesBtn.click();
                 checkNameListRows([
                     ["1", "firstname1", "lastname1", "firstname1.lastname1@gmail.com"]
                 ]);
             });
 
             it("item is not deleted when clicking the item's Delete button and then clicking the No button", function() {
-                browser.get(urlWithTestIdentifier(4));
-                element.all(by.repeater("item in nameListModel.items")).get(1).element(by.css(".deleteBtn")).click();
-                element(by.css(".deleteNoBtn")).click();
+                nameListPage.get(4);
+                nameListPage.getDeleteBtnForRowIndex(1).click();
+                deleteItemDialog.deleteNoBtn.click();
                 checkNameListRows([
                     ["1", "firstname1", "lastname1", "firstname1.lastname1@gmail.com"],
                     ["2", "firstname2", "lastname2", "firstname2.lastname2@gmail.com"]
@@ -167,34 +226,34 @@
         describe("dialog form validation", function() {
 
             it("sets focus to the first name field initially", function() {
-                browser.get(urlWithTestIdentifier(1));
-                element(by.id("addItemBtn")).click();
+                nameListPage.get(1);
+                nameListPage.addItemBtn.click();
                 expect(element.all(by.css("#firstName:focus")).count()).toBe(1);
             });
 
             it("hides all validation error messages initially", function() {
-                browser.get(urlWithTestIdentifier(1));
-                element(by.id("addItemBtn")).click();
+                nameListPage.get(1);
+                nameListPage.addItemBtn.click();
                 checkVisibilityOfElements(by.css("div[data-ng-form] span.alert"), 0, 4);
                 checkVisibilityOfElements(by.css("div[data-ng-form] span[data-jt-required-field-validation-error]"), 0, 3);
                 checkVisibilityOfElements(by.css("div[data-ng-form] span[data-jt-email-validation-error]"), 0, 1);
             });
 
             it("displays a required field validation error message against each field when trying to submit a completely blank form", function() {
-                browser.get(urlWithTestIdentifier(1));
-                element(by.id("addItemBtn")).click();
-                element(by.id("okBtn")).click();
+                nameListPage.get(1);
+                nameListPage.addItemBtn.click();
+                addItemDialog.okBtn.click();
                 checkVisibilityOfElements(by.css("div[data-ng-form] span[data-jt-required-field-validation-error]"), 3, 0);
                 checkVisibilityOfElements(by.css("div[data-ng-form] span[data-jt-email-validation-error]"), 0, 1);
             });
 
             it("displays an email validation error message when trying to submit a form with an invalid email address", function() {
-                browser.get(urlWithTestIdentifier(1));
-                element(by.id("addItemBtn")).click();
-                element(by.model("addItemDialogModel.item.FirstName")).sendKeys("firstname3");
-                element(by.model("addItemDialogModel.item.LastName")).sendKeys("lastname3");
-                element(by.model("addItemDialogModel.item.Email")).sendKeys("bogus");
-                element(by.id("okBtn")).click();
+                nameListPage.get(1);
+                nameListPage.addItemBtn.click();
+                addItemDialog.setFirstName("firstname3");
+                addItemDialog.setLastName("lastname3");
+                addItemDialog.setEmail("bogus");
+                addItemDialog.okBtn.click();
                 checkVisibilityOfElements(by.css("div[data-ng-form] span[data-jt-required-field-validation-error]"), 0, 3);
                 checkVisibilityOfElements(by.css("div[data-ng-form] span[data-jt-email-validation-error]"), 1, 0);
             });
