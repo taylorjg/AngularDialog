@@ -116,8 +116,6 @@
     <Content Include="Scripts\ThirdParty\AngularJS\1.3.0\angular.min.js" />
     <Content Include="Scripts\ThirdParty\AngularJS\1.3.0\version.txt" />
     <Content Include="Tests\EndToEndTests\EndToEndTestHttpBackendSetup.js" />
-    <Content Include="Tests\EndToEndTests\EndToEndTestRunner.html" />
-    <Content Include="Tests\EndToEndTests\EndToEndTestScenarios.js" />
     <Content Include="Scripts\models.js" />
     <Content Include="Styles\NameList.css" />
     <Content Include="NameList.aspx" />
