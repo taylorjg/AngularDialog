@@ -12,7 +12,7 @@
 
     var app = angular.module("NameListApp");
 
-    app.controller("nameList.controllers.NameListController", ["$scope", "$dialog", "nameListService", function ($scope, $dialog, nameListService) {
+    app.controller("nameList.controllers.NameListController", ["$scope", "$dialog", "$interpolate", "nameListService", function ($scope, $dialog, $interpolate, nameListService) {
 
         $scope.nameListModel = new nameList.models.NameListModel();
         $scope.nameListModel.items = nameListService.query();
@@ -41,8 +41,12 @@
 
         $scope.onDeleteItem = function (item) {
 
+            var title = $interpolate("Delete Item {{id}}")({
+                id: item.Id
+            });
+
             var messageBox = $dialog.messageBox(
-                "Delete Item",
+                title,
                 "Are you sure you want to delete this item?",
                 [
                     { label: "Yes", result: true, cssClass: "btn-danger deleteYesBtn" },
