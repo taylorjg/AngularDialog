@@ -11,7 +11,7 @@ module.exports = function (grunt) {
             files: [
                 "Gruntfile.js",
                 "AngularDialog/Scripts/*.js",
-                "AngularDialog/Tests/EndToEndTests/*.js",
+                "AngularDialog/Tests/EndToEndTests/**/*.js",
                 "AngularDialog/Tests/UnitTests/*.js"
             ]
         },

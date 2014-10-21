@@ -1,4 +1,4 @@
-/* global describe, beforeEach, it, expect, browser, element, by */
+/* global require, describe, beforeEach, it, expect */
 
 // ReSharper disable InconsistentNaming
 
@@ -13,10 +13,10 @@
     var checkNameListRows = function (nameListPage, expectedRows) {
         var actualRows = [];
         nameListPage.nameListItems.map(function(item) {
-            var column1 = item.element(by.binding("item.Id"));
-            var column2 = item.element(by.binding("item.FirstName"));
-            var column3 = item.element(by.binding("item.LastName"));
-            var column4 = item.element(by.binding("item.Email"));
+            var column1 = nameListPage.getColumn1ForItem(item);
+            var column2 = nameListPage.getColumn2ForItem(item);
+            var column3 = nameListPage.getColumn3ForItem(item);
+            var column4 = nameListPage.getColumn4ForItem(item);
             column1.getText().then(function(id) {
                 column2.getText().then(function(firstName) {
                     column3.getText().then(function(lastName) {

@@ -1,4 +1,6 @@
-﻿// ReSharper disable InconsistentNaming
+﻿/* global module, element, by */
+
+// ReSharper disable InconsistentNaming
 
 (function () {
 

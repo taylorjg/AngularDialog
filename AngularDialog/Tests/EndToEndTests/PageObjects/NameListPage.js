@@ -1,4 +1,6 @@
-﻿// ReSharper disable InconsistentNaming
+﻿/* global module, browser, element, by */
+
+// ReSharper disable InconsistentNaming
 
 (function () {
     
@@ -13,6 +15,18 @@
     var NameListPage = function () {
         this.nameListItems = element.all(by.repeater("item in nameListModel.items"));
         this.addItemBtn = element(by.id("addItemBtn"));
+        this.getColumn1ForItem = function(item) {
+            return item.element(by.binding("item.Id"));
+        };
+        this.getColumn2ForItem = function (item) {
+            return item.element(by.binding("item.FirstName"));
+        };
+        this.getColumn3ForItem = function (item) {
+            return item.element(by.binding("item.LastName"));
+        };
+        this.getColumn4ForItem = function (item) {
+            return item.element(by.binding("item.Email"));
+        };
         this.getEditBtnForItemIndex = function (itemIndex) {
             return element.all(by.repeater("item in nameListModel.items")).get(itemIndex).element(by.css(".editBtn"));
         };
