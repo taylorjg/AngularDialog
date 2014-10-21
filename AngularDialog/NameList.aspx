@@ -50,7 +50,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr data-ng-repeat="item in nameListModel.items">
+                            <tr data-ng-repeat="item in nameListModel.items" data-ng-cloak="">
                                 <td>{{item.Id}}</td>
                                 <td>{{item.FirstName}}</td>
                                 <td>{{item.LastName}}</td>
