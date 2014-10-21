@@ -5,12 +5,10 @@
 (function () {
 
     "use strict";
-
-    var baseUrl = "http://localhost:58587/NameList.aspx";
-
-    var urlWithTestIdentifier = function(testIdentifier) {
-        return baseUrl + "?e2etest=" + testIdentifier;
-    };
+    
+    var NameListPage = require("./PageObjects/NameListPage.js");
+    var AddItemDialog = require("./PageObjects/AddItemDialog.js");
+    var DeleteItemDialog = require("./PageObjects/DeleteItemDialog.js");
 
     var checkNameListRows = function (nameListPage, expectedRows) {
         var actualRows = [];
@@ -61,56 +59,6 @@
             numHidden: expectedNumHidden
         };
         expect(actual).toEqual(expected);
-    };
-
-    var NameListPage = function() {
-        this.nameListItems = element.all(by.repeater("item in nameListModel.items"));
-        this.addItemBtn = element(by.id("addItemBtn"));
-        this.getEditBtnForItemIndex = function (itemIndex) {
-            return element.all(by.repeater("item in nameListModel.items")).get(itemIndex).element(by.css(".editBtn"));
-        };
-        this.getDeleteBtnForItemIndex = function(itemIndex) {
-            return element.all(by.repeater("item in nameListModel.items")).get(itemIndex).element(by.css(".deleteBtn"));
-        };
-        this.get = function (testIdentifier) {
-            browser.get(urlWithTestIdentifier(testIdentifier));
-        };
-    };
-
-    var AddItemDialog = function() {
-        this.firstName = element(by.model("addItemDialogModel.item.FirstName"));
-        this.lastName = element(by.model("addItemDialogModel.item.LastName"));
-        this.email = element(by.model("addItemDialogModel.item.Email"));
-        this.inputFieldWithFocus = element(by.css("input:focus"));
-        this.validationErrors = element.all(by.css("div[data-ng-form] span.alert"));
-        this.requiredValidationErrors = element.all(by.css("div[data-ng-form] span[data-jt-required-field-validation-error]"));
-        this.emailValidationErrors = element.all(by.css("div[data-ng-form] span[data-jt-email-validation-error]"));
-        this.okBtn = element(by.id("okBtn"));
-        this.cancelBtn = element(by.id("cancelBtn"));
-        this.closeBtn = element(by.id("closeBtn"));
-        this.setFirstName = function(value) {
-            this.firstName.sendKeys(value);
-        };
-        this.setLastName = function(value) {
-            this.lastName.sendKeys(value);
-        };
-        this.setEmail = function(value) {
-            this.email.sendKeys(value);
-        };
-        this.clearFirstName = function() {
-            this.firstName.clear();
-        };
-        this.clearLastName = function() {
-            this.lastName.clear();
-        };
-        this.clearEmail = function() {
-            this.email.clear();
-        };
-    };
-
-    var DeleteItemDialog = function() {
-        this.deleteYesBtn = element(by.css(".deleteYesBtn"));
-        this.deleteNoBtn = element(by.css(".deleteNoBtn"));
     };
 
     describe("AngularDialog End-to-End Tests", function () {
