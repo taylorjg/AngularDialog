@@ -12,7 +12,8 @@
 
     var checkNameListRows = function (nameListPage, expectedRows) {
         var actualRows = [];
-        nameListPage.nameListItems.map(function(item) {
+        var nameListItems = nameListPage.nameListItems();
+        nameListItems.map(function(item) {
             var column1 = nameListPage.getColumn1ForItem(item);
             var column2 = nameListPage.getColumn2ForItem(item);
             var column3 = nameListPage.getColumn3ForItem(item);
@@ -26,7 +27,8 @@
                     });
                 });
             });
-        }).then(function() {
+        });
+        nameListItems.then(function () {
             expect(actualRows.length).toBe(expectedRows.length);
             for (var i = 0; i < actualRows.length; i++) {
                 expect(actualRows[i]).toEqual(expectedRows[i]);
@@ -35,7 +37,7 @@
     };
 
     var checkNumNameListRows = function (nameListPage, expectedNumItems) {
-        var actualNumItems = nameListPage.nameListItems.count();
+        var actualNumItems = nameListPage.nameListItems().count();
         expect(actualNumItems).toBe(expectedNumItems);
     };
 
@@ -89,7 +91,7 @@
             it("clicking the ok button in the AddItem dialog box appends a new item to the table", function() {
                 nameListPage.get(2);
                 checkNumNameListRows(nameListPage, 2);
-                nameListPage.addItemBtn.click();
+                nameListPage.addItemBtn().click();
                 addItemDialog.setFirstName("firstname3");
                 addItemDialog.setLastName("lastname3");
                 addItemDialog.setEmail("firstname3.lastname3@gmail.com");
@@ -100,7 +102,7 @@
             it("item added via the AddItem dialog box has the correct values", function() {
                 nameListPage.get(2);
                 checkNumNameListRows(nameListPage, 2);
-                nameListPage.addItemBtn.click();
+                nameListPage.addItemBtn().click();
                 addItemDialog.setFirstName("firstname3");
                 addItemDialog.setLastName("lastname3");
                 addItemDialog.setEmail("firstname3.lastname3@gmail.com");
@@ -115,7 +117,7 @@
             it("clicking the cancel button in the AddItem dialog box does not append a new item to the table", function() {
                 nameListPage.get(1);
                 checkNumNameListRows(nameListPage, 2);
-                nameListPage.addItemBtn.click();
+                nameListPage.addItemBtn().click();
                 addItemDialog.cancelBtn.click();
                 checkNumNameListRows(nameListPage, 2);
             });
@@ -123,7 +125,7 @@
             it("clicking the close button in the AddItem dialog box does not append a new item to the table", function() {
                 nameListPage.get(1);
                 checkNumNameListRows(nameListPage, 2);
-                nameListPage.addItemBtn.click();
+                nameListPage.addItemBtn().click();
                 addItemDialog.closeBtn.click();
                 checkNumNameListRows(nameListPage, 2);
             });
@@ -180,13 +182,13 @@
 
             it("sets focus to the first name field initially", function() {
                 nameListPage.get(1);
-                nameListPage.addItemBtn.click();
+                nameListPage.addItemBtn().click();
                 expect(addItemDialog.inputFieldWithFocus.getAttribute("id")).toBe(addItemDialog.firstName.getAttribute("id"));
             });
 
             it("hides all validation error messages initially", function() {
                 nameListPage.get(1);
-                nameListPage.addItemBtn.click();
+                nameListPage.addItemBtn().click();
                 checkVisibilityOfElements(addItemDialog.validationErrors, 0, 4);
                 checkVisibilityOfElements(addItemDialog.requiredValidationErrors, 0, 3);
                 checkVisibilityOfElements(addItemDialog.emailValidationErrors, 0, 1);
@@ -194,7 +196,7 @@
 
             it("displays a required field validation error message against each field when trying to submit a completely blank form", function() {
                 nameListPage.get(1);
-                nameListPage.addItemBtn.click();
+                nameListPage.addItemBtn().click();
                 addItemDialog.okBtn.click();
                 checkVisibilityOfElements(addItemDialog.requiredValidationErrors, 3, 0);
                 checkVisibilityOfElements(addItemDialog.emailValidationErrors, 0, 1);
@@ -202,7 +204,7 @@
 
             it("displays an email validation error message when trying to submit a form with an invalid email address", function() {
                 nameListPage.get(1);
-                nameListPage.addItemBtn.click();
+                nameListPage.addItemBtn().click();
                 addItemDialog.setFirstName("firstname3");
                 addItemDialog.setLastName("lastname3");
                 addItemDialog.setEmail("bogus");

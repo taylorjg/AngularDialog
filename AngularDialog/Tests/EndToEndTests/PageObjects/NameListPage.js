@@ -13,8 +13,12 @@
     };
     
     var NameListPage = function () {
-        this.nameListItems = element.all(by.repeater("item in nameListModel.items"));
-        this.addItemBtn = element(by.id("addItemBtn"));
+        this.nameListItems = function() {
+            return element.all(by.repeater("item in nameListModel.items"));
+        };
+        this.addItemBtn = function() {
+            return element(by.id("addItemBtn"));
+        };
         this.getColumn1ForItem = function(item) {
             return item.element(by.binding("item.Id"));
         };
@@ -28,10 +32,10 @@
             return item.element(by.binding("item.Email"));
         };
         this.getEditBtnForItemIndex = function (itemIndex) {
-            return element.all(by.repeater("item in nameListModel.items")).get(itemIndex).element(by.css(".editBtn"));
+            return this.nameListItems().get(itemIndex).element(by.css(".editBtn"));
         };
         this.getDeleteBtnForItemIndex = function (itemIndex) {
-            return element.all(by.repeater("item in nameListModel.items")).get(itemIndex).element(by.css(".deleteBtn"));
+            return this.nameListItems().get(itemIndex).element(by.css(".deleteBtn"));
         };
         this.get = function (testIdentifier) {
             browser.get(urlWithTestIdentifier(testIdentifier));
