@@ -7,8 +7,12 @@
     "use strict";
     
     var DeleteItemDialog = function () {
-        this.deleteYesBtn = element(by.css(".deleteYesBtn"));
-        this.deleteNoBtn = element(by.css(".deleteNoBtn"));
+        this.deleteYesBtn = function() {
+            return element(by.css(".deleteYesBtn"));
+        }
+        this.deleteNoBtn = function() {
+            return element(by.css(".deleteNoBtn"));
+        }
     };
 
     module.exports = DeleteItemDialog;

@@ -95,7 +95,7 @@
                 addItemDialog.setFirstName("firstname3");
                 addItemDialog.setLastName("lastname3");
                 addItemDialog.setEmail("firstname3.lastname3@gmail.com");
-                addItemDialog.okBtn.click();
+                addItemDialog.okBtn().click();
                 checkNumNameListRows(nameListPage, 3);
             });
 
@@ -106,7 +106,7 @@
                 addItemDialog.setFirstName("firstname3");
                 addItemDialog.setLastName("lastname3");
                 addItemDialog.setEmail("firstname3.lastname3@gmail.com");
-                addItemDialog.okBtn.click();
+                addItemDialog.okBtn().click();
                 checkNameListRows(nameListPage, [
                     ["1", "firstname1", "lastname1", "firstname1.lastname1@gmail.com"],
                     ["2", "firstname2", "lastname2", "firstname2.lastname2@gmail.com"],
@@ -118,7 +118,7 @@
                 nameListPage.get(1);
                 checkNumNameListRows(nameListPage, 2);
                 nameListPage.addItemBtn().click();
-                addItemDialog.cancelBtn.click();
+                addItemDialog.cancelBtn().click();
                 checkNumNameListRows(nameListPage, 2);
             });
 
@@ -126,7 +126,7 @@
                 nameListPage.get(1);
                 checkNumNameListRows(nameListPage, 2);
                 nameListPage.addItemBtn().click();
-                addItemDialog.closeBtn.click();
+                addItemDialog.closeBtn().click();
                 checkNumNameListRows(nameListPage, 2);
             });
         });
@@ -136,9 +136,9 @@
             it("when an item is edited, the dialog controls are populated correctly", function() {
                 nameListPage.get(3);
                 nameListPage.getEditBtnForItemIndex(1).click();
-                expect(addItemDialog.firstName.getAttribute("value")).toBe("firstname2");
-                expect(addItemDialog.lastName.getAttribute("value")).toBe("lastname2");
-                expect(addItemDialog.email.getAttribute("value")).toBe("firstname2.lastname2@gmail.com");
+                expect(addItemDialog.firstName().getAttribute("value")).toBe("firstname2");
+                expect(addItemDialog.lastName().getAttribute("value")).toBe("lastname2");
+                expect(addItemDialog.email().getAttribute("value")).toBe("firstname2.lastname2@gmail.com");
             });
 
             it("an item can be edited", function() {
@@ -148,7 +148,7 @@
                 addItemDialog.clearLastName();
                 addItemDialog.setFirstName("firstname2-new");
                 addItemDialog.setLastName("lastname2-new");
-                addItemDialog.okBtn.click();
+                addItemDialog.okBtn().click();
                 checkNameListRows(nameListPage, [
                     ["1", "firstname1", "lastname1", "firstname1.lastname1@gmail.com"],
                     ["2", "firstname2-new", "lastname2-new", "firstname2.lastname2@gmail.com"]
@@ -161,7 +161,7 @@
             it("item is deleted when clicking the item's Delete button and then clicking the Yes button", function() {
                 nameListPage.get(4);
                 nameListPage.getDeleteBtnForItemIndex(1).click();
-                deleteItemDialog.deleteYesBtn.click();
+                deleteItemDialog.deleteYesBtn().click();
                 checkNameListRows(nameListPage, [
                     ["1", "firstname1", "lastname1", "firstname1.lastname1@gmail.com"]
                 ]);
@@ -170,7 +170,7 @@
             it("item is not deleted when clicking the item's Delete button and then clicking the No button", function() {
                 nameListPage.get(4);
                 nameListPage.getDeleteBtnForItemIndex(1).click();
-                deleteItemDialog.deleteNoBtn.click();
+                deleteItemDialog.deleteNoBtn().click();
                 checkNameListRows(nameListPage, [
                     ["1", "firstname1", "lastname1", "firstname1.lastname1@gmail.com"],
                     ["2", "firstname2", "lastname2", "firstname2.lastname2@gmail.com"]
@@ -183,23 +183,23 @@
             it("sets focus to the first name field initially", function() {
                 nameListPage.get(1);
                 nameListPage.addItemBtn().click();
-                expect(addItemDialog.inputFieldWithFocus.getAttribute("id")).toBe(addItemDialog.firstName.getAttribute("id"));
+                expect(addItemDialog.inputFieldWithFocus().getAttribute("id")).toBe(addItemDialog.firstName().getAttribute("id"));
             });
 
             it("hides all validation error messages initially", function() {
                 nameListPage.get(1);
                 nameListPage.addItemBtn().click();
-                checkVisibilityOfElements(addItemDialog.validationErrors, 0, 4);
-                checkVisibilityOfElements(addItemDialog.requiredValidationErrors, 0, 3);
-                checkVisibilityOfElements(addItemDialog.emailValidationErrors, 0, 1);
+                checkVisibilityOfElements(addItemDialog.validationErrors(), 0, 4);
+                checkVisibilityOfElements(addItemDialog.requiredValidationErrors(), 0, 3);
+                checkVisibilityOfElements(addItemDialog.emailValidationErrors(), 0, 1);
             });
 
             it("displays a required field validation error message against each field when trying to submit a completely blank form", function() {
                 nameListPage.get(1);
                 nameListPage.addItemBtn().click();
-                addItemDialog.okBtn.click();
-                checkVisibilityOfElements(addItemDialog.requiredValidationErrors, 3, 0);
-                checkVisibilityOfElements(addItemDialog.emailValidationErrors, 0, 1);
+                addItemDialog.okBtn().click();
+                checkVisibilityOfElements(addItemDialog.requiredValidationErrors(), 3, 0);
+                checkVisibilityOfElements(addItemDialog.emailValidationErrors(), 0, 1);
             });
 
             it("displays an email validation error message when trying to submit a form with an invalid email address", function() {
@@ -208,9 +208,9 @@
                 addItemDialog.setFirstName("firstname3");
                 addItemDialog.setLastName("lastname3");
                 addItemDialog.setEmail("bogus");
-                addItemDialog.okBtn.click();
-                checkVisibilityOfElements(addItemDialog.requiredValidationErrors, 0, 3);
-                checkVisibilityOfElements(addItemDialog.emailValidationErrors, 1, 0);
+                addItemDialog.okBtn().click();
+                checkVisibilityOfElements(addItemDialog.requiredValidationErrors(), 0, 3);
+                checkVisibilityOfElements(addItemDialog.emailValidationErrors(), 1, 0);
             });
         });
     });
